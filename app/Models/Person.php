@@ -10,6 +10,17 @@ class Person extends Model
 {
     use HasFactory;
 
+    protected $dates = [];
+    public $timestamps = false;
+
+    protected $guarded = array('id');
+
+    public static $rules = array(
+        'name' => 'required',
+        'mail'=> 'email',
+        'age' => 'integer|min:0|max:150'
+    );
+
     public function getData()
     {
         return $this->id . ': ' . $this->name . ' (' . $this->age . ')';
@@ -35,4 +46,15 @@ class Person extends Model
         parent::boot();
         static::addGlobalScope(new ScopePerson);
     }
+
+    public function board()
+    {
+        return $this->hasOne('App\Models\Board');
+    }
+
+    public function boards()
+    {
+        return $this->hasMany('App\Models\Board');
+    }
+
 }

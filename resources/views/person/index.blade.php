@@ -10,15 +10,28 @@
 @section('content')
     <table>
         <tr>
-            <th>NAME</th>
-            <th>MAIL</th>
-            <th>AGE</th>
+            <th>Person</th>
+            <th>Board</th>
         </tr>
-    @foreach ($items as $item)
+        @foreach ($items as $item)
         <tr>
-            <td>{{$item->getData()}}</td>
+            <td>
+                {{$item->getData()}}
+            </td>
+            <td>
+            @if ($item->boards != null)
+                <table width="100px">
+                @foreach ($item->boards as $obj)
+                    <tr>
+                        <td>{{ $obj->getData() }}</td>
+                    </tr> 
+                @endforeach
+                </table>
+            @endif
+            </td>
         </tr>
-    @endforeach
+        @endforeach
+    </table>
 @endsection
 
 @section('footer')

@@ -4,5 +4,6 @@
     "cSpell.ignoreWords": [
         "laravelapp",
         "pgsql"
-    ]
+    ],
+    "docker.host": "ssh://root@54.150.226.114"
 }
